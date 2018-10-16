@@ -96,7 +96,7 @@ int main(int argc, char * argv[]){
 
 		for(counter = 0; counter<2; counter++) { 
 			c = fgetc(fp_i);
-			if(c == ' ' || c == '\n'){
+			if(c == ' ' || c == '\n' || c== '\r'){
 				c = fgetc(fp_i);
 			}
 			type[counter] = c;
@@ -107,7 +107,7 @@ int main(int argc, char * argv[]){
 			// loop to get amount
 			for(counter = 0; counter < 2; counter++) { 
 				c = fgetc(fp_i);
-				if(c == ' ' || c == '\n'){
+				if(c == ' ' || c == '\n' || c== '\r'){
 					c = fgetc(fp_i);
 				}
 				amount_0[counter] = c;
@@ -127,7 +127,7 @@ int main(int argc, char * argv[]){
 					// reads in char
 					c = fgetc(fp_i);
 					// skips over space
-					if(c == ' '){
+					if(c == ' ' || c =='\n' || c== '\r'){
 						c = fgetc(fp_i);
 					}
 					// adds char to the char* for the number
@@ -160,13 +160,13 @@ int main(int argc, char * argv[]){
 				// gets first byte 
 				c = fgetc(fp_i);
 				// skips over space
-				if(c == ' '){
+				if(c == ' ' || c =='\n' || c== '\r'){
 					c = fgetc(fp_i);
 				}
 				amount1 = atoi(&c);
 				c = fgetc(fp_i);
 				// skips over space
-				if(c == ' '){
+				if(c == ' ' || c =='\n' || c== '\r'){
 					c = fgetc(fp_i);
 				}
 				amount2 = atoi(&c);
@@ -185,12 +185,12 @@ int main(int argc, char * argv[]){
 			while(1){
 				char char1 = fgetc(fp_i);
 				// skips over space
-				if(char1 == ' '|| char1 == '\n'){
+				if(char1 == ' '|| char1 == '\n' || char1== '\r'){
 					char1 = fgetc(fp_i);
 				}
 				char char2 = fgetc(fp_i);
 				// skips over space and new line
-				if(char2 == ' ' || char2 == '\n'){
+				if(char2 == ' ' || char2 == '\n'|| char2== '\r'){
 					char2 = fgetc(fp_i);
 				}
 				if(feof(fp_i)){
