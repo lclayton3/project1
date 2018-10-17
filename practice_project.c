@@ -114,7 +114,7 @@ int main(int argc, char * argv[]){
 			}
 			// writes type to file 
 			amount_0[2] = '\0';
-			fprintf(fp_o, "%c", '0');
+			fprintf(fp_o, "%c", '00');
 			fprintf(fp_o, "%s", amount_0);
 			fprintf(fp_o, "%c", ' ');
 			int_amount = atoi(amount_0);
@@ -178,7 +178,7 @@ int main(int argc, char * argv[]){
 				//returns first ascii chracter(as an integer) for amount and adds it to final amount
 				final_amount += digit;
 			}
-			fprintf(fp_o, "%s%d", "00", final_amount);
+			fprintf(fp_o, "%s%d", "100", final_amount);
 			fprintf(fp_o, "%c", ' ');
 
 			// loop to find the numbers that will be printed to the file
