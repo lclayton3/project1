@@ -53,7 +53,7 @@ int main(int argc, char * argv[]){
 
 	else if(c == '1'){
 		int digit = 0;
-
+		char hex[5];
 		printf("%s\n", "type 1");
 		strcat(final_string,"00");
 		printf("%s\n", final_string);
@@ -83,9 +83,9 @@ int main(int argc, char * argv[]){
 		 		strcat(final_string, holder);
 		 		digit = 0;
 		   		c = fgetc(fp_i);
-		 	 	printf("%x\n", atoi(num));
+		 	 	sprintf(hex,"%x", atoi(num));
 		 	 	char num[4];
-		 	 	strcat(final_string, num);
+		 	 	strcat(final_string, hex);
 		   	}
 		  	num[digit] = c;
 		  	digit++;
@@ -93,10 +93,11 @@ int main(int argc, char * argv[]){
 		 	//
 
 		  }
-		  printf("%x\n", atoi(num));
+		  sprintf(hex,"%x\n", atoi(num));
 		  holder[0] = '0';
 		  strcat(final_string, holder);
-		  strcat(final_string, num);
+		  strcat(final_string, hex);
+		  printf("%s\n", final_string);
         
 	}
 
