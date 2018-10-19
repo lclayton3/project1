@@ -22,8 +22,10 @@ char *servlP;
 char *echoString;
 char echoBuffer[RCVBUFSIZE];
 unsigned int echoStringLen;
+unsigned int typeStringLen;
+//unsigned int targetStringLen;
 int bytesRcvd, totalBytesRcvd;
-int type;
+char *type;
 char * target;
 if ((argc !=  6)){
 	fprintf(stderr, "Usage: %s <Server IP> <Echo Word> [<Echo Port>]\n", argv[0]);
@@ -42,7 +44,8 @@ echoServPort = atoi(argv[2]); /* Use given port, if any */
 echoString = argv[3];
 type = argv[4];
 target = argv[5];
-if (argc == " ")
+//strcat(echoString,input_file);
+if (atoi(argv[2]) == 0)
 	echoServPort = 7; 
 /* 7 is the well-known port for the echo service */
 /* Create a reliable, stream socket using TCP */
@@ -57,10 +60,14 @@ echoServAddr.sin_port = htons(echoServPort);
 /* Establish the connection to the echo server */
 if (connect(sock, (struct sockaddr *) &echoServAddr, sizeof(echoServAddr)) < 0)
 	DieWithError(" connect () failed") ;
-echoStringLen = strlen(echoString) ; 
+echoStringLen = strlen(echoString);
+typeStringLen = strlen(type); 
+//targetStringLen = strlen(target);
 /* Determine input length */
 /* Send the string to the server */
 if (send(sock, echoString, echoStringLen, 0) != echoStringLen)
+DieWithError("send() sent a different number of bytes than expected");
+if (send(sock, type, typeStringLen, 0) != typeStringLen)
 DieWithError("send() sent a different number of bytes than expected");
 /* Receive the same string back from the server */
 totalBytesRcvd = 0;
